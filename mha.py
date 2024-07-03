@@ -52,8 +52,8 @@ steps = range(1000,10000,1000)
 ##################################################################################
 ### takeing the inputs for the parameters or using defults
 if len(sys.argv)>1:
-  mu=int(sys.argv[1])
-  omega=int(sys.argv[2])
+  mu=float(sys.argv[1])
+  omega=float(sys.argv[2])
   alpha=float(sys.argv[3])
   beta=float(sys.argv[4])
 else:
