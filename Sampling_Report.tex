@@ -12,37 +12,43 @@
 
 \subsection{Rejection Sampling}
 
-This method is commonly used for quantum measurements.\citep{Rivas2011} \\
-I have written code in multiple languages to measure systems using this method \\
-can some times require the generation of throw away random numbers before generating the values to be used. \\
-In the case of normalized distributions is very nice to work with. Other wise need to scale the generator function \citep{JakeRS}\\
-In the case here can lead to many rejection \\
-can reduce the rejection rate by using a gaussian envelope \citep{RelSRS}\\
-
+\begin{itemize}
+\itemsep-0.3cm 
+\item This method is commonly used for quantum measurements.\citep{Rivas2011} \\
+\item I have written code in multiple languages to measure systems using this method \\
+\item Can some times require the generation of throw away random numbers before generating the values to be used. \\
+\item In the case of normalized distributions is very nice to work with. Other wise need to scale the generator function \citep{JakeRS}\\
+\item In the case here can lead to many rejection \\
+\item Can reduce the rejection rate by using a gaussian envelope \citep{RelSRS}\\
+\item This method is very easy to paralyze. \\
+\end{itemize}
 
 
 
 
 \subsection{Markov Chain Monte Carlo}
 
-
-follows a random walk\citep{robert2016metropolishastingsalgorithm} \\
-could get stuck in a region of $f(x)$ \\
-may need a burnin time if initial guess is bad\citep{DMHA}\\
-No need to calculate the norm\\ 
-need to choose an appropriate step generator \\
-
+\begin{itemize}
+\itemsep-0.3cm 
+\item Follows a random walk\citep{robert2016metropolishastingsalgorithm} \\
+\item Could get stuck in a region of $f(x)$ \\
+\item May need a burnin time if initial guess is bad\citep{DMHA}\\
+\item No need to calculate the norm\\ 
+\item Need to choose an appropriate step generator \\
+\end{itemize}
 
 \subsection{Inverse Transform Sampling}
 
-need to create an inverse of the function \\
-best to do that numerically \\
-would need very small $\Delta$ as continuous\\
-memory usage high to store array for inverse of p(x)\\
-in the given example each probability will have to x values\\
-need flip coin to determine if grater then or less then $\mu$\\
-is non-continues \citep{ITPCDF}\citep{KKCDF}
-
+\begin{itemize}
+\itemsep-0.3cm 
+\item Need to create an inverse of the function \\
+\item Best to do that numerically \\
+\item Would need very small $\Delta$ as continuous\\
+\item Memory usage high to store array for inverse of p(x)\\
+\item In the given example each probability will have to x values\\
+\item Need flip coin to determine if grater then or less then $\mu$\\
+\item Is non-continues \citep{ITPCDF}\citep{KKCDF}
+\end{itemize}
 
 \section{Question 2}
 
@@ -53,6 +59,7 @@ The code was written in python and implemented the Markov Chain Monte Carlo. The
 
 \section{Question 4}
 
+In the case of specialized hardware changes I would make would be to put the calculation of p(x) onto the accelerator. I would set it up so all the calculations concerning the probability would stay on the accelerator.  In the case of multiple processor I would set up a walker on each processor to run independently and then sum at the end.
 
 
 \bibliographystyle{plain}
