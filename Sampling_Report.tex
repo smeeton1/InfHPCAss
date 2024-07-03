@@ -1,24 +1,62 @@
 \documentclass{article}
+
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+\usepackage{hyperref}
+
+
+
 \begin{document}
 
-\section{Rejection Sampling}
+\section{Question 1}
 
-This method is very commonly used in quantum simulations to simulate the measurement process. Code in various languages to preform this method can be found in my past programs.  As such to maximize the amount I can take away from this exercise I will not go into depth here and instead concentrate on the other two methods.
+\subsection{Rejection Sampling}
 
-\section{Markov Chain Monte Carlo}
+This method is commonly used for quantum measurements.\citep{Rivas2011} \\
+I have written code in multiple languages to measure systems using this method \\
+can some times require the generation of throw away random numbers before generating the values to be used. \\
+In the case of normalized distributions is very nice to work with. Other wise need to scale the generator function \citep{JakeRS}\\
+In the case here can lead to many rejection \\
+can reduce the rejection rate by using a gaussian envelope \citep{RelSRS}\\
 
-follows a random walk \\
-could get stuck in a region of $f(x)$
 
 
-\section{Inverse Transform Sampling}
+
+
+\subsection{Markov Chain Monte Carlo}
+
+
+follows a random walk\citep{robert2016metropolishastingsalgorithm} \\
+could get stuck in a region of $f(x)$ \\
+may need a burnin time if initial guess is bad\citep{DMHA}\\
+No need to calculate the norm\\ 
+need to choose an appropriate step generator \\
+
+
+\subsection{Inverse Transform Sampling}
 
 need to create an inverse of the function \\
 best to do that numerically \\
 would need very small $\Delta$ as continuous\\
-memory usage high to store array for inverse\\
+memory usage high to store array for inverse of p(x)\\
 in the given example each probability will have to x values\\
-need flip coin to determine if grater then or less then $\mu$
+need flip coin to determine if grater then or less then $\mu$\\
+is non-continues \citep{ITPCDF}\citep{KKCDF}
+
+
+\section{Question 2}
+
+The code was written in python and implemented the Markov Chain Monte Carlo. The code can be found in the file mha.py. I choses the Metropolis–Hastings algorithm as it does not need the calculation of the norm. 
+
+\section{Question 3}
+
+
+\section{Question 4}
+
+
+
+\bibliographystyle{plain}
+\bibliography{inf.bib}{}%
 
 
 
