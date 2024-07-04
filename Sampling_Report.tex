@@ -3,6 +3,8 @@
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{appendix,amsmath,amssymb,bbm,graphicx,nccmath,subfigure,mathrsfs}
+\usepackage{wrapfig}
 
 
 
@@ -15,12 +17,10 @@
 \begin{itemize}
 \itemsep-0.3cm 
 \item This method is commonly used for quantum measurements.\citep{Rivas2011} \\
-\item I have written code in multiple languages to measure systems using this method \\
 \item Can some times require the generation of throw away random numbers before generating the values to be used. \\
 \item In the case of normalized distributions is very nice to work with. Other wise need to scale the generator function \citep{JakeRS}\\
 \item In the case here can lead to many rejection \\
-\item Can reduce the rejection rate by using a gaussian envelope \citep{RelSRS}\\
-\item This method is very easy to paralyze. \\
+\item Can reduce the rejection rate by using a gaussian envelope In this case. \citep{RelSRS}\\
 \end{itemize}
 
 
@@ -30,11 +30,11 @@
 
 \begin{itemize}
 \itemsep-0.3cm 
-\item Follows a random walk\citep{robert2016metropolishastingsalgorithm} \\
-\item Could get stuck in a region of $f(x)$ \\
+\item Follows a random walk \\
+\item Could get stuck in a region of $f(x)$\citep{robert2016metropolishastingsalgorithm} \\
 \item May need a burnin time if initial guess is bad\citep{DMHA}\\
 \item No need to calculate the norm\\ 
-\item Need to choose an appropriate step generator \\
+\item Need to choose an appropriate step generator to insure all domain is sampled.\\
 \end{itemize}
 
 \subsection{Inverse Transform Sampling}
@@ -52,14 +52,74 @@
 
 \section{Question 2}
 
-The code was written in python and implemented the Markov Chain Monte Carlo. The code can be found in the file mha.py. I choses the Metropolis–Hastings algorithm as it does not need the calculation of the norm. 
+The code was written in python and implemented the Markov Chain Monte Carlo methods. The code can be found in the file mha.py. I choses the Metropolis–Hastings algorithm as it does not need the calculation of the norm saving some time. Also this method does not have any need to make a choice when generating a sample as each x has a unique p. Directions for the code can be found in the readme.
 
 \section{Question 3}
+
+Some results from for the Metropolis–Hastings algorithm are show below in the figures \ref{Defult}, \ref{one}, \ref{two}, and \ref{three}.  The time and memory usage is shown for each set of parameter in \ref{DTM}, \ref{1TM}, \ref{1TM}, and \ref{3TM}. In these figures it is shown that time and the memory scale linearly with the number of steps regardless of the choice for parameters. 
+
+In figures  \ref{DES}, \ref{1ES}, \ref{1ES}, and \ref{3ES}, the expectation value and standard deviation are shown. In the case  where $\mu$ was less then $\alpha$ the expectation value and standard deviation where close to the chosen parameters for p(x). When $\mu$ was taken to be larger then $\alpha$, as was the case in \ref{1ES}, and \ref{3ES}, the method failed to converge in the vicinity of  given parameters. In this case a different method would likely give better results. 
+
+\begin{figure}[!ht]
+\centering
+\subfigure[]{\label{DTM}\includegraphics[width=0.4\textwidth]{defukt_t_m.png}}  
+\subfigure[]{\label{DES}\includegraphics[width=0.4\textwidth]{defult_E_sd.png}}
+
+\caption{Fig (a) shows the memory and time taken for $\mu=0$, $\omega=1$, $\alpha=1$, and $\beta=0.5$. (b) show the expectation value and standard deviation for the same values.}
+\label{Defult}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\subfigure[]{\label{1TM}\includegraphics[width=0.4\textwidth]{0_1,5_1_,5_T_M.png}}  
+\subfigure[]{\label{1ES}\includegraphics[width=0.4\textwidth]{0_1,5_1_,5_E_sd.png}}
+
+\caption{Fig (a) shows the memory and time taken for $\mu=0$, $\omega=1.5$, $\alpha=1$, and $\beta=0.5$. (b) show the expectation value and standard deviation for the same values.}
+\label{one}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\subfigure[]{\label{2TM}\includegraphics[width=0.4\textwidth]{1_1_1_,5_T_M.png}}  
+\subfigure[]{\label{2ES}\includegraphics[width=0.4\textwidth]{1_1_1_,5_E_sd.png}}
+
+\caption{Fig (a) shows the memory and time taken for $\mu=1$, $\omega=1$, $\alpha=1$, and $\beta=0.5$. (b) show the expectation value and standard deviation for the same values.}
+\label{two}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\subfigure[]{\label{3TM}\includegraphics[width=0.4\textwidth]{2_1_1_,5_T_M.png}}  
+\subfigure[]{\label{3ES}\includegraphics[width=0.4\textwidth]{2_1_1_,5_E_sd.png}}
+
+\caption{Fig (a) shows the memory and time taken for $\mu=2$, $\omega=1$, $\alpha=1$, and $\beta=0.5$. (b) show the expectation value and standard deviation for the same values.}
+\label{three}
+\end{figure}
+
+In figures \ref{long} and \ref{long2} the results are shown for when the method was allowed to run for longer, a larger number of steps. Again the growth of the time taken and memory usage remained linear as seen in figures \ref{LTM} and \ref{L2TM}.  Figures \ref{LES} and \ref{L2ES} show that the expectation value and the standard deviation do converge with increased steps. Once again the error is greater in the case that $\mu$ is grater then $\alpha$.
+
+\begin{figure}[!ht]
+\centering
+\subfigure[]{\label{LTM}\includegraphics[width=0.4\textwidth]{Figure_1.png}}  
+\subfigure[]{\label{LES}\includegraphics[width=0.4\textwidth]{Figure_2.png}}
+
+\caption{Fig (a) shows the memory and time taken for $\mu=0$, $\omega=1$, $\alpha=1$, and $\beta=0.5$. (b) show the expectation value and standard deviation for the same values. Both of the above figures show results for a large number of steps.}
+\label{long}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\subfigure[]{\label{L2TM}\includegraphics[width=0.4\textwidth]{Figure_3.png}}  
+\subfigure[]{\label{L2ES}\includegraphics[width=0.4\textwidth]{Figure_4.png}}
+
+\caption{Fig (a) shows the memory and time taken for $\mu=2$, $\omega=1$, $\alpha=1$, and $\beta=0.5$. (b) show the expectation value and standard deviation for the same values. Both of the above figures show results for a large number of steps.}
+\label{long2}
+\end{figure}
 
 
 \section{Question 4}
 
-In the case of specialized hardware changes I would make would be to put the calculation of p(x) onto the accelerator. I would set it up so all the calculations concerning the probability would stay on the accelerator.  In the case of multiple processor I would set up a walker on each processor to run independently and then sum at the end.
+In the case of having accesses specialized hardware,  I would make changes to the way p(x) is calculated. The calculation of p(x) would be moved onto the accelerator. I would set it up so all the calculations concerning the probability would stay on the accelerator.  In the case of multiple processor I would set up a walker on each processor to run independently and then merge the results of the walker to get better accuracy at the end.
 
 
 \bibliographystyle{plain}
