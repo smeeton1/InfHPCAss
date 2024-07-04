@@ -19,7 +19,7 @@
 \item This method is commonly used for quantum measurements.\citep{Rivas2011} \\
 \item Can some times require the generation of throw away random numbers before generating the values to be used. \\
 \item In the case of normalized distributions is very nice to work with. Other wise need to scale the generator function \citep{JakeRS}\\
-\item In the case here can lead to many rejection \\
+\item Can lead to many rejection \\
 \item Can reduce the rejection rate by using a gaussian envelope In this case. \citep{RelSRS}\\
 \end{itemize}
 
@@ -41,11 +41,10 @@
 
 \begin{itemize}
 \itemsep-0.3cm 
-\item Need to create an inverse of the function \\
-\item Best to do that numerically \\
+\item Need to create an inverse of the function, best to do that numerically \\
 \item Would need very small $\Delta$ as continuous\\
 \item Memory usage high to store array for inverse of p(x)\\
-\item In the given example each probability will have to x values\\
+\item In the given example each probability will have two x values\\
 \item Need flip coin to determine if grater then or less then $\mu$\\
 \item Is non-continues \citep{ITPCDF}\citep{KKCDF}
 \end{itemize}
@@ -56,9 +55,9 @@ The code was written in python and implemented the Markov Chain Monte Carlo meth
 
 \section{Question 3}
 
-Some results from for the Metropolis–Hastings algorithm are show below in the figures \ref{Defult}, \ref{one}, \ref{two}, and \ref{three}.  The time and memory usage is shown for each set of parameter in \ref{DTM}, \ref{1TM}, \ref{1TM}, and \ref{3TM}. In these figures it is shown that time and the memory scale linearly with the number of steps regardless of the choice for parameters. 
+Some results from for the Metropolis–Hastings algorithm are show below in figures \ref{Defult}, \ref{one}, \ref{two}, and \ref{three}.  The time and memory usage is shown for each set of parameter in \ref{DTM}, \ref{1TM}, \ref{2TM}, and \ref{3TM}. In these figures it is shown that time and the memory scale linearly with the number of steps regardless of the choice for parameters. 
 
-In figures  \ref{DES}, \ref{1ES}, \ref{1ES}, and \ref{3ES}, the expectation value and standard deviation are shown. In the case  where $\mu$ was less then $\alpha$ the expectation value and standard deviation where close to the chosen parameters for p(x). When $\mu$ was taken to be larger then $\alpha$, as was the case in \ref{1ES}, and \ref{3ES}, the method failed to converge in the vicinity of  given parameters. In this case a different method would likely give better results. 
+In figures  \ref{DES}, \ref{1ES}, \ref{2ES}, and \ref{3ES}, the expectation value and standard deviation are shown. In the case  where $\mu$, figures  \ref{DES} and \ref{1ES}, was less then $\alpha$ the expectation value and standard deviation where close to the chosen parameters for p(x). When $\mu$ was taken to be larger then or equal to $\alpha$, as was the case in \ref{2ES} and \ref{3ES}, the method failed to converge in the vicinity of  given parameters. In this case a different method would likely give better results. 
 
 \begin{figure}[!ht]
 \centering
@@ -96,7 +95,7 @@ In figures  \ref{DES}, \ref{1ES}, \ref{1ES}, and \ref{3ES}, the expectation valu
 \label{three}
 \end{figure}
 
-In figures \ref{long} and \ref{long2} the results are shown for when the method was allowed to run for longer, a larger number of steps. Again the growth of the time taken and memory usage remained linear as seen in figures \ref{LTM} and \ref{L2TM}.  Figures \ref{LES} and \ref{L2ES} show that the expectation value and the standard deviation do converge with increased steps. Once again the error is greater in the case that $\mu$ is grater then $\alpha$.
+In figures \ref{long} and \ref{long2} the results are shown for when the method was allowed to run for longer, a larger number of steps. Again the growth of the time taken and memory usage remained linear as seen in figures \ref{LTM} and \ref{L2TM}.  Figures \ref{LES} and \ref{L2ES} show that the expectation value and the standard deviation do converge with increased steps. Once again the error is greater in the case that $\mu$ is grater then $\alpha$, figure  \ref{L2ES}.
 
 \begin{figure}[!ht]
 \centering
@@ -125,6 +124,8 @@ In the case of having accesses specialized hardware,  I would make changes to th
 \bibliographystyle{plain}
 \bibliography{inf.bib}{}%
 
+
+ 
 
 
 \end{document}
